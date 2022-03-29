@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'projects',
     'comments',
     'like',
+    'track',
     'rest_framework',
 ]
 
