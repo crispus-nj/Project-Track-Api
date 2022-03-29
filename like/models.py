@@ -7,6 +7,6 @@ like_choices = (
 )
 
 class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="users")
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True ,related_name="users")
     # post = ''
     choices = models.CharField(choices=like_choices, max_length=10)
