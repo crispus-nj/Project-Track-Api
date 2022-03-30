@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -27,5 +29,27 @@ class UserManager(BaseUserManager):
         return user
 
 
-# class User(AbstractBaseUser, PermissionMixin):
+class User(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=30,unique=True)
+    email = models.EmailField(max_length=250,unique=True)
+    first_name = models.CharField(max_length=30,blank=True,null=True)
+    last_name = models.CharField(max_length=30,blank=True,null=True)
+    is_active = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_superuser  = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(default=timezone.now())
+    receive_newsletter = models.BooleanField(default=False)
+    birth_date = models.DateTimeField(blank=True,null=True)
+    address = models.CharField(max_length=300, blank=True,null=True)
+    city = models.CharField(max_length=30,blank=True, null=True)
+    about_me = models.TextField(max_length=500, blank=True, null=True)
+    profile_image = models.ImageField(null=True)
+
+    objects = UserManager()
+
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email',]
+
+
 
