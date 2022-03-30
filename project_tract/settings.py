@@ -75,7 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project_tract.wsgi.application'
 
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.Account'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 

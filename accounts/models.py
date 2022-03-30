@@ -1,55 +1,81 @@
 from django.db import models
-from django.contrib.auth.models import PermissionsMixin
-from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
-from django.utils import timezone
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-class UserManager(BaseUserManager):
-    def _create_user(self, username, email, password, is_active, is_staff, is_superuser, **extra_fields):
-        now = timezone.now()
+# Create your models here.
+class MyAccountManager(BaseUserManager):
+    def create_user(self, first_name, last_name, username, email, password=None):
+        if not email:
+            raise ValueError('user must have an email address')
+
         if not username:
-            raise ValueError("The given username is not valid")
-        email= self.normalize_email(email)
-        user = self.model(username=username, email=email, is_active=True,
-                            is_staff=is_staff, is_superuser=is_superuser,date_joined=now, **extra_fields)
+            raise ValueError("user must have a username")
+
+        user = self.model(
+            email = self.normalize_email(email),
+            username = username,
+            first_name = first_name,
+            last_name = last_name,
+        )
+
+
+
         user.set_password(password)
         user.save(using=self._db)
-
         return user
 
 
-    def create_user(self, username, email, password, **extra_fields):
-        return self._create_user(self, username, email, password,is_active=True,is_staff=False,is_superuser=False,
-         **extra_fields)
 
-    def create_superuser(self, username, email, password, **extra_fields):
-        user = self._create_user(username,email,password,is_active=True,
-        is_staff=True,is_superuser=True, **extra_fields)
 
+    def create_superuser(self, first_name, last_name, email, username, password):
+        user = self.create_user(
+            email  = self.normalize_email(email),
+            username = username,
+            password = password,
+            first_name = first_name,
+            last_name = last_name,
+            
+            )
+        user.is_admin = True
+        user.is_active = True
+        user.is_staff = True
+        user.is_superadmin = True
+        user.save(using=self._db)
         return user
 
+        
+class Account(AbstractBaseUser):
+    first_name      = models.CharField(max_length=50)
+    last_name       = models.CharField(max_length=50)
+    username        = models.CharField(max_length=100, unique=True)
+    email           = models.EmailField(max_length=100, unique=True)
+    phone_number    = models.CharField(max_length=50)
 
-class User(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=30,unique=True)
-    email = models.EmailField(max_length=250,unique=True)
-    first_name = models.CharField(max_length=30,blank=True,null=True)
-    last_name = models.CharField(max_length=30,blank=True,null=True)
-    is_active = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    is_superuser  = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(default=timezone.now())
-    receive_newsletter = models.BooleanField(default=False)
-    birth_date = models.DateTimeField(blank=True,null=True)
-    address = models.CharField(max_length=300, blank=True,null=True)
-    city = models.CharField(max_length=30,blank=True, null=True)
-    about_me = models.TextField(max_length=500, blank=True, null=True)
-    profile_image = models.ImageField(null=True)
-
-    objects = UserManager()
-
-
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email',]
+    #required
+    date_joined = models.DateTimeField(auto_now_add=True)
+    last_login  = models.DateTimeField(auto_now_add=True)
+    is_admin    = models.BooleanField(default=False)
+    is_staff    = models.BooleanField(default=False)
+    is_active   = models.BooleanField(default=False)
+    is_superadmin = models.BooleanField(default=False)
 
 
 
+
+    USERNAME_FIELD    = 'email'
+    REQUIRED_FIELDS   = ['username', 'first_name', 'last_name']
+
+    objects = MyAccountManager()
+
+
+
+
+    def __str__(self):
+        return self.email
+
+
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
+
+    def has_module_perms(self, add_label):
+        return True
