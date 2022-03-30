@@ -24,5 +24,5 @@ router.register("like/unlike",LikeViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('like-api/', include(router.urls))
+    path('like-api/', include('like.urls'))
 ]
