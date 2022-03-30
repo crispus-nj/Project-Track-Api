@@ -2,3 +2,4 @@ virtual/
 __pycache__
 .env
 db.sqlite3
+venv/
