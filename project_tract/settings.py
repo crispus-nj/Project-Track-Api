@@ -44,14 +44,10 @@ INSTALLED_APPS = [
     'like',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',
-    'rest_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'rest_auth.registration',
+    'users',
+    
 ]
+
 
 
 
@@ -141,3 +137,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
