@@ -54,18 +54,11 @@ INSTALLED_APPS = [
     'like',
     'track',
     'rest_framework',
-# <<<<<<< development
-#     'rest_framework.authtoken',
-#     'users',
-#     'corsheaders',
-
-    
-# =======
-#     'cloudinary'
-# >>>>>>> project
+    'rest_framework.authtoken',
+    'users',
+    'corsheaders',
+    'cloudinary'
 ]
-
-
 
 
 CORS_ORIGIN_ALLOW_ALL = True
