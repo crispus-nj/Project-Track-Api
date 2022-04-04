@@ -54,8 +54,21 @@ INSTALLED_APPS = [
     'like',
     'track',
     'rest_framework',
-    'cloudinary'
+# <<<<<<< development
+#     'rest_framework.authtoken',
+#     'users',
+#     'corsheaders',
+
+    
+# =======
+#     'cloudinary'
+# >>>>>>> project
 ]
+
+
+
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,6 +78,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'project_tract.urls'
@@ -87,7 +102,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project_tract.wsgi.application'
 
-
+AUTH_USER_MODEL = 'accounts.Account'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -139,3 +154,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
