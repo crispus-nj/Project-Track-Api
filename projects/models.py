@@ -11,9 +11,9 @@ class Project(models.Model):
     date_updated= models.DateField(auto_now_add=True)
     liked = models.ManyToManyField(Account, null=True, blank=True, related_name='liked')
 
-    # @property
-    # def num_likes(self):
-    #     return self.liked.all().count()
+    @property
+    def num_likes(self):
+        return self.liked.all().count()
 
     @classmethod
     def search_by_title(cls,search_term):
