@@ -4,7 +4,7 @@ from tkinter import CASCADE
 from django.db import models
 from accounts.models import Account
 from projects.models import Project
-
+from django.contrib.auth.models import AbstractUser, User
 import projects
 
 # Create your models here.
