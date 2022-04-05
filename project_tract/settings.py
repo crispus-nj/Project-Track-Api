@@ -12,10 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
-<<<<<<< HEAD
-=======
-# from decouple import config
->>>>>>> 95c2f41f56df96a6ee158be1f01df573a688fadb
+
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
