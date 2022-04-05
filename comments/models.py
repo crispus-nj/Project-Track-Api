@@ -1,11 +1,7 @@
-from pyexpat import model
-from tabnanny import verbose
-from tkinter import CASCADE
 from django.db import models
 from accounts.models import Account
 from projects.models import Project
-from django.contrib.auth.models import AbstractUser, User
-import projects
+from projects.models import Project
 
 # Create your models here.
 class Single(models.Model):
@@ -21,7 +17,7 @@ class Single(models.Model):
 
 
 class Rating(models.Model):
-    Project = models.ForeignKey(projects, on_delete=models.CASCADE),
+    Project = models.ForeignKey(Project, on_delete=models.CASCADE),
     user = models.ForeignKey(Account, on_delete=models.CASCADE),
     rating = models.FloatField()
 
