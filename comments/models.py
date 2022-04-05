@@ -1,7 +1,6 @@
 from django.db import models
 from accounts.models import Account
 from projects.models import Project
-from projects.models import Project
 
 # Create your models here.
 class Single(models.Model):
