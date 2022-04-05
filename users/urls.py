@@ -1,5 +1,3 @@
-from unicodedata import name
-from venv import create
 from django.urls import path
 
 from users import views
