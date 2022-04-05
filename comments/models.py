@@ -9,11 +9,8 @@ import projects
 
 # Create your models here.
 class Single(models.Model):
-    Project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name="Project", default=1),
+    Project = models.ForeignKey(Project, on_delete=models.CASCADE)
     body = models.CharField(max_length=300)
-
-    class Meta:
-        verbose_name_plural = "Projects"
 
     def __str__(self):
         return self.Project
