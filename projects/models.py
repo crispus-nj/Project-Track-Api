@@ -1,6 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
-
+from accounts.models import Account
 # Create your models here.
 class Project(models.Model):
     image= CloudinaryField('image')
@@ -9,11 +9,11 @@ class Project(models.Model):
     github_link = models.URLField()
     date_created = models.DateField(auto_now_add=True)
     date_updated= models.DateField(auto_now_add=True)
-    # liked = models.ManyToManyField(UserAccount, null=True, blank=True, related_name='liked')
+    liked = models.ManyToManyField(Account, null=True, blank=True, related_name='liked')
 
-    # @property
-    # def num_likes(self):
-    #     return self.liked.all().count()
+    @property
+    def num_likes(self):
+        return self.liked.all().count()
 
     @classmethod
     def search_by_title(cls,search_term):

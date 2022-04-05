@@ -1,8 +1,6 @@
-from turtle import onclick
 from django.db import models
 from accounts.models import Account
 from projects.models import Project
-from django.contrib.auth.models import AbstractUser, User
 
 # Create your models here.
 
