@@ -1,4 +1,5 @@
 from tkinter import CASCADE
+from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -6,7 +7,7 @@ from django.contrib.auth.models import User
 
 
 class Single(models.Model):
-    #title = models.ForeignKey('title', on_delete=models.CASCADE, related_name='title')
+    name = models.ForeignKey('title', on_delete=models.CASCADE, related_name='name')
     body = models.TextField()
     users = models.ForeignKey(User, on_delete=CASCADE)
 
@@ -17,12 +18,12 @@ class Single(models.Model):
 
 
 class Rating(models.Model):
-    #project = models.ForeignKey('project', on_delete=models.CASCADE, related_name='project')
+    project = models.ForeignKey('project', on_delete=models.CASCADE, related_name='project')
     user = models.ForeignKey(User, default=1)
     rating = models.FloatFiled()
 
     def __str__(self):
-        return (self.rating, self.project, self.user)
+        return (self.rating)
 
 
 
