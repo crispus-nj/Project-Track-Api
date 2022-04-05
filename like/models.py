@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from accounts.models import Account
+from projects.models import Project
+
 # Create your models here.
 like_choices = (
     ('like', 'like'),
@@ -7,6 +9,6 @@ like_choices = (
 )
 
 class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True ,related_name="users")
-    # post = ''
+    user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True ,related_name="users")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True ,related_name="projects")
     choices = models.CharField(choices=like_choices, max_length=10)
