@@ -2,7 +2,7 @@ import imp
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Single, Rating
-from serializers import SingleSerializer, RatingSerializer
+from .serializers import SingleSerializer, RatingSerializer
 
 # Create your views here.
 

@@ -7,7 +7,7 @@ from projects.models import Project
 class Single(models.Model):
     Project = models.ForeignKey(Project, on_delete=models.CASCADE)
     body = models.CharField(max_length=300)
-    users = models.ManyToManyField(Account, on_delete=models.SET_NULL, null=True, related_name='members')
+    users = models.ManyToManyField(Account, blank=True, null=True, related_name='members')
 
     def __str__(self):
         return self.Project

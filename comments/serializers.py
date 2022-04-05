@@ -7,10 +7,10 @@ from .models import Single, Rating
 class SingleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Single
-        field = '__all__'
+        fields = '__all__'
 
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
-        field = '__all__'
+        fields = '__all__'
