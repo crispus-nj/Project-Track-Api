@@ -8,6 +8,7 @@ from rest_framework import status
 def api_routes(request):
     urls = [
         "GET http://127.0.0.1:8000/api/projects/",
+        "GET http://127.0.0.1:8000/api/track/",
         "GET http://127.0.0.1:8000/api/like-api/",
         "GET http://127.0.0.1:8000/api/users/",
         "GET http://127.0.0.1:8000/api/single-project/",

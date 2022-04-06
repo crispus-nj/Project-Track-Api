@@ -7,5 +7,6 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     path('like-api/', include('like.urls')),
     path('users/', include('users.urls')),
-    path('single-project/', include('comments.urls'))
+    path('single-project/', include('comments.urls')),
+    path('track/', include('track.urls'))
 ]
