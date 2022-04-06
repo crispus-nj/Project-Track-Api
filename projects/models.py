@@ -1,8 +1,10 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from accounts.models import Account
+
 # Create your models here.
 class Project(models.Model):
+    name = models.CharField(max_length=50, null=True)
     image= CloudinaryField('image')
     description = models.CharField(max_length=30)
     technologies = models.CharField(max_length=500)
@@ -22,3 +24,6 @@ class Project(models.Model):
     
     def save_project(self):
         self.save()   
+
+    def __str__(self):
+        return str(self.name)

@@ -12,3 +12,6 @@ class Like(models.Model):
     user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True ,related_name="users")
     project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True ,related_name="projects")
     choices = models.CharField(choices=like_choices, max_length=10)
+
+    def __str__(self):
+        return str(self.project.name)
