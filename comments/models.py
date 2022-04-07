@@ -15,8 +15,8 @@ class Single(models.Model):
 
 
 class Rating(models.Model):
-    Project = models.ForeignKey(Project, on_delete=models.CASCADE),
-    user = models.ForeignKey(Account, on_delete=models.CASCADE),
+    project = models.ForeignKey(Project, on_delete=models.CASCADE),
+    user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True),
     rating = models.FloatField()
 
 
