@@ -10,7 +10,7 @@ app_name = 'users'
 
 
 urlpatterns = [
-    path('create/', include(router.urls), name='create'),
+    path('', include(router.urls), name='create'),
     path('token/', views.CreateTokenView.as_view(), name='token'),
     path('me/', views.ManageUserView.as_view(), name='me'),
 ]

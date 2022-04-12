@@ -1,0 +1,1 @@
+web: gunicorn project_tract.wsgi --log-file -
