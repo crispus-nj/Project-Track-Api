@@ -50,8 +50,8 @@ class Account(AbstractBaseUser):
     username        = models.CharField(max_length=100, unique=True)
     email           = models.EmailField(max_length=100, unique=True)
     phone_number    = models.CharField(max_length=50)
-    bio             = models.TextField(blank=True, null = True)
-    avatar = CloudinaryField("image")
+    # bio             = models.TextField(blank=True, null = True)
+    # avatar = CloudinaryField("image")
     
 
     #required
