@@ -7,10 +7,10 @@ from rest_framework import status
 @api_view(['GET'])
 def api_routes(request):
     urls = [
-        "GET https://project-track-api.herokuapp.com/api/projects/",
-        "GET https://project-track-api.herokuapp.com/api/track/",
-        "GET https://project-track-api.herokuapp.com/api/like-api/",
-        "GET https://project-track-api.herokuapp.com/api/users/",
-        "GET https://project-track-api.herokuapp.com/api/single-project/",
+        "GET http://127.0.0.1:8000/api/projects/",
+        "GET http://127.0.0.1:8000/api/track/",
+        "GET http://127.0.0.1:8000/api/like-api/",
+        "GET http://127.0.0.1:8000/api/users/",
+        "GET http://127.0.0.1:8000/api/single-project/",
     ]
     return Response(urls, status=status.HTTP_202_ACCEPTED)
