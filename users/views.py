@@ -9,11 +9,10 @@ from users import serializers
 # Create your views here.
 
 
-class CreateUserView(viewsets.ModelViewSet):
+class CreateUserView(generics.CreateAPIView):
     """creates a new user in the system"""
-    queryset = Account.objects.all()
     serializer_class = UserSerializer
-
+    
 class CreateTokenView(ObtainAuthToken):
     """create a new auth token for user"""
     serializer_class = AuthTokenSerializer
