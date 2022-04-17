@@ -5,7 +5,7 @@ from projects.models import Project
 # Create your models here.
 
 class Single(models.Model):
-    body = models.CharField(max_length=300)
+    body = models.CharField(max_length=300, null=True, blank=True)
     Project = models.ForeignKey(Project, on_delete=models.CASCADE)
     users = models.ManyToManyField(Account, blank=True, null=True, related_name='members')
 
