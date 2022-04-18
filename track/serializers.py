@@ -9,4 +9,4 @@ class TrackSerializer(serializers.ModelSerializer):
     #     )
     class Meta:
         model = Track
-        fields = ['name']
+        fields = '__all__'

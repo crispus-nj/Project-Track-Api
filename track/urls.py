@@ -7,5 +7,6 @@ router = DefaultRouter()
 router.register("track-selection", views.TrackViewSet) 
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('getTracks', views.getTracks.as_view(), name="getTracks")
 ]
