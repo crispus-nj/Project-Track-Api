@@ -14,12 +14,12 @@ class SingleSerializer(serializers.ModelSerializer):
         model = Single
         fields = '__all__'
 
-class RecipeMainSerializer(serializers.ModelSerializer):
-    ingredients = UserSerializer(many=True)
+# class RecipeMainSerializer(serializers.ModelSerializer):
+#     ingredients = UserSerializer(many=True)
 
-    class Meta:
-        model = Single
-        fields = '__all__'
+#     class Meta:
+#         model = Single
+#         fields = '__all__'
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
